@@ -50,10 +50,10 @@ module.exports = class homiex extends Exchange {
             'urls': {
                 'logo': 'https://static.bhfastime.com/bhop/image/2C_zoVPah7FR8Iw6ts-I1Oqd3ogpQ5XQ0mIhBrBKQnY.png', // 交易所LOGO
                 'api': {
-                    'market': 'https://www.homiex.com/openapi/quote',  // 市场API数据端点
-                    'contract': 'https://www.homiex.com/openapi/contract', // 合约API数据端点
-                    'public': 'https://www.homiex.com/openapi', // 公共API数据端点
-                    'private': 'https://www.homiex.com/openapi', // 私有API数据端点
+                    'market': 'https://api.homiex.com/openapi/quote',  // 市场API数据端点
+                    'contract': 'https://api.homiex.com/openapi/contract', // 合约API数据端点
+                    'public': 'https://api.homiex.com/openapi', // 公共API数据端点
+                    'private': 'https://api.homiex.com/openapi', // 私有API数据端点
                     'zendesk': 'https://support.homiex.com/hc/en-us',
                 },
                 'www': 'https://www.homiex.com', // 公司主页
