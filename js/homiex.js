@@ -153,15 +153,13 @@ module.exports = class homiex extends Exchange {
             const base = this.safeCurrencyCode (baseId);
             const quote = this.safeCurrencyCode (quoteId);
             const symbol = base + '/' + quote;
-            const precision = {
-                'price': Math.floor (Math.log10 (1 / this.safeFloat (market, 'quotePrecision'))),
-                'amount': Math.floor (Math.log10 (1 / this.safeFloat (market, 'baseAssetPrecision'))),
-            };
+
             // get limits
             let amountMin = undefined;
             let amountMax = undefined;
             let priceMin = undefined;
             let priceMax = undefined;
+            let tickSize = undefined;
             let costMin = undefined;
             for (let j = 0; j < filters.length; j++) {
                 const filter = filters[j];
@@ -173,8 +171,14 @@ module.exports = class homiex extends Exchange {
                 if (filterType === 'PRICE_FILTER') {
                     priceMin = this.safeFloat (filter, 'minPrice');
                     priceMax = this.safeFloat (filter, 'maxPrice');
+                    tickSize = this.safeFloat (filter, 'tickSize');
                 }
             }
+            const precision = {
+                'price': Math.floor(Math.log10(1 / tickSize)),
+                'amount': Math.floor(Math.log10(1 / this.safeFloat(market, 'baseAssetPrecision'))),
+            };
+
             if (amountMin !== undefined && priceMin !== undefined) {
                 costMin = amountMin * priceMin;
             }
